@@ -36,9 +36,12 @@ plugins:
 
 nav:
     - Tổng quát: general/overview.md
-    - Giới thiệu về ros2: general/introduce-ros2.md
-    - Lộ trình tổng thể: usage.md
-    - Chương trình học:
+    - Giới thiệu về ros2: general/gioi-thieu-ve-ros2.md
+    - Lộ trình tổng thể: general/learning-catalog.md
+    - Nội dung : 
+        - Cài đặt ros2: blog/posts/cai-dat-ros2-jazzy-ubuntu.md
+        - Kiểm tra cài đặt: blog/posts/kiem-tra-cai-dat-ros2.md
+        - Hardware Interface: blog/posts/hardware-interface-tutorial-1.md
         - blog/index.md
         - Tags: blog/tags.md  
 extra:
