@@ -5,18 +5,19 @@ date:
 authors:
   - p_hieu
 categories:
-  - Mới bắt đầu  
+  - Tổng quan  
 tags:
   - Mới bắt đầu 
   - Ros2
-  - festive season  
+  - Robotics
+  - Giới thiệu  
 pin: true
-draft: true
+draft: false
 links:
   - Homepage: index.md
   - Blog index: blog/index.md
   - External links:
-    - Material documentation: https://squidfunk.github.io/mkdocs-material
+    - Material documentation: https://virobo.org/training
   
 ---
 # Tổng quát mục tiêu và sứ mệnh
