@@ -119,13 +119,3 @@ Lộ trình học ROS 2 từ cơ bản đến nâng cao (cho người làm robot
 |Module5|Thực chiến robot công nghiệp | **Mục tiêu:**  Phát triển cánh tay robot linh hoạt cao trong nhà máy để thực hiện: `Cầm nắm đồ vật`, `Phân loại hàng mẫu`, `Kiểm soát hàng lỗi`, `Phối hợp giữa 2 tay`|
 |Module6|Thực chiến robot cao cấp | **Mục tiêu:**  Phát triển chó robot giống cyberDog của Xaomi với tiếng Việt và văn hóa bản địa.|
 
- 
-And this will produce a flow chart:
-
-```mermaid
-graph LR
-A[Square Rect] -- Link text --> B((Circle))
-A --> C(Round Rect)
-B --> D{Rhombus}
-C --> D
-```

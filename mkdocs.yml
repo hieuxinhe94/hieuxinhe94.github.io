@@ -40,7 +40,7 @@ nav:
     - Lộ trình tổng thể: general/learning-catalog.md
     - Nội dung : 
         - Cài đặt ros2: blog/posts/cai-dat-ros2-jazzy-ubuntu.md
-        - Kiểm tra cài đặt: blog/posts/kiem-tra-cai-dat-ros2.md
+        - Kiểm tra cài đặt: blog/posts/helloworld.md
         - Hardware Interface: blog/posts/hardware-interface-tutorial-1.md
         - blog/index.md
         - Tags: blog/tags.md  
