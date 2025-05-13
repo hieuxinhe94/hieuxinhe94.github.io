@@ -90,5 +90,5 @@ colcon build --symlink-install --packages-select hello_world
 source install/local_setup.bash
 ```
 
-- Ok, tạm thời đến đây thôi, trong bài viết tiếp theo tôi sẽ hướng dẫn bạn chạy ví dụ nho nhỏ và bạn sẽ thấy gì đó thú vị hơn. 
+- Ok, tạm thời đến đây thôi, trong bài viết tiếp theo tôi sẽ hướng dẫn bạn tạo dự án robot giống thực tế và bạn sẽ thấy gì đó thú vị hơn. 
 
