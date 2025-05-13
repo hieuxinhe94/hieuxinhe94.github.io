@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://virobo.org/training/</loc>
+         <lastmod>2025-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://virobo.org/training/blog/</loc>
+         <lastmod>2025-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://virobo.org/training/blog/tags/</loc>
+         <lastmod>2025-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://virobo.org/training/blog/author/p_hieu/</loc>
+         <lastmod>2025-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://virobo.org/training/general/gioi-thieu-ve-ros2/</loc>
+         <lastmod>2025-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://virobo.org/training/general/learning-catalog/</loc>
+         <lastmod>2025-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://virobo.org/training/general/overview/</loc>
+         <lastmod>2025-05-13</lastmod>
+    </url>
+</urlset>

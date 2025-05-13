@@ -1,0 +1,733 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Thực chiến các bài học về Robotics">
+      
+      
+        <meta name="author" content="VIROBO">
+      
+      
+        <link rel="canonical" href="https://virobo.org/training/general/gioi-thieu-ve-ros2/">
+      
+      
+        <link rel="prev" href="../overview/">
+      
+      
+        <link rel="next" href="../learning-catalog/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.13">
+    
+    
+      
+        <title>Giới thiệu về ros2 - VIROBO - Training Robotics</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#gioi-thieu-ve-robot-operating-system" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="VIROBO - Training Robotics" class="md-header__button md-logo" aria-label="VIROBO - Training Robotics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            VIROBO - Training Robotics
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Giới thiệu về ros2
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="VIROBO - Training Robotics" class="md-nav__button md-logo" aria-label="VIROBO - Training Robotics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    VIROBO - Training Robotics
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tổng quát
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Giới thiệu về ros2
+    
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learning-catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lộ trình tổng thể
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../blog/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Nội dung
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Nội dung
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/2025/04/01/h%C6%B0%E1%BB%9Bng-d%E1%BA%ABn-c%C3%A0i-%C4%91%E1%BA%B7t-ros2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hướng dẫn cài đặt ros2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/2025/04/01/hello-world/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hello world
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/2025/04/01/hardware-component/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hardware Component
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/tags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tags
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Archive
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+        <a href="../../blog/tags/#tag:mới-bắt-đầu" class="md-tag">Mới bắt đầu</a>
+      
+    
+      
+      
+      
+        <a href="../../blog/tags/#tag:ros2" class="md-tag">Ros2</a>
+      
+    
+      
+      
+      
+        <a href="../../blog/tags/#tag:festive-season" class="md-tag">festive season</a>
+      
+    
+  </nav>
+
+
+
+<h1 id="gioi-thieu-ve-robot-operating-system">Giới thiệu về Robot Operating System</h1>
+<p>Nếu bạn chỉ muốn thiết kế những robot đồ chơi hoặc sản phẩm gia dụng đơn giản trên thị trường cả chục năm nay, thực tế, bạn chỉ cần học một vài thứ nhỏ như Pygame, hay mô-đun điều khiển, hay một thư mục như OpenCV là đủ. Tuy nhiên chúng ta không ở đây để dừng lại mức đó, chúng ta cần robot với việc giao tiếp giữa các sensor, camera, di chuyển phức tạp, có khả năng tự hành, trí thông minh của AI, thì bạn cần một tập hợp các thư viện phức tạp. Dĩ nhiên các tập đoàn lớn như Tesla họ sẽ tự xây dựng riêng bộ thư viện của họ vì là bí mật kinh doanh, nhưng hầu như các công ty nổi tiếng khác đều sử dụng <strong>Robot Operating System</strong> trong mục đích mô phỏng, thiết kế robot. </p>
+<h1 id="tai-sao-la-robot-operating-system">Tại sao là Robot Operating System :</h1>
+<p>Là một opensource nhưng ROS (Robot Operating System) cung cấp khá đồ sộ những công cụ và khả năng customize, mở rộng rất cao là ưu điểm lớn. </p>
+<p>So sánh giũa Ros và việc tự implement bằng Python/OpenCV/... </p>
+<table>
+<thead>
+<tr>
+<th>Tính năng</th>
+<th>Robot Operating System</th>
+<th>Tự customize Python/OpenCV/...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Giao tiếp phân tán</td>
+<td><code>Có sẵn (Nodes, Topics, DDS)</code></td>
+<td>Không có – phải tự viết</td>
+</tr>
+<tr>
+<td>Điều khiển real-time</td>
+<td><code>Hỗ trợ tốt</code></td>
+<td>Khó đạt</td>
+</tr>
+<tr>
+<td>Kết nối phần cứng linh hoạt</td>
+<td>Có hardware interface sẵn</td>
+<td>Phải tự code driver</td>
+</tr>
+<tr>
+<td>Mô phỏng robot</td>
+<td>Tích hợp RViz, Gazebo</td>
+<td>Không hỗ trợ trực tiếp</td>
+</tr>
+<tr>
+<td>Điều hướng tự hành</td>
+<td>Navigation2, SLAM2D, MoveIt2</td>
+<td>Phải tự code</td>
+</tr>
+<tr>
+<td>Quan sát dữ liệu realtime</td>
+<td>rqt, RViz, Foxglove Studio</td>
+<td>Phải tự viết UI</td>
+</tr>
+<tr>
+<td>Cộng đồng hỗ trợ</td>
+<td>Rất mạnh vì không có lựa chọn khác</td>
+<td>Không chuyên dụng</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Quan trọng :</strong> Thời điểm viết khóa học này ROS đã release phiên bản khá ổn định là <strong>ROS2 Jazzy</strong> thế nên từ sau đây, mặc định các nội dung hay thuật ngữ của tôi sẽ áp dụng từ phiên bản này trở đi!</p>
+</blockquote>
+<h1 id="cac-thanh-phan-chinh-trong-ros-2">Các thành phần chính trong ROS 2</h1>
+<pre><code>[ Sensor / Motor / Camera ]
+        ↓
+[ Hardware Interface ]  &lt;--- Kết nối driver phần cứng
+        ↓
+[ Controller Manager ]  &lt;--- Quản lý PID, trajectory, velocity...
+        ↓
+[ ROS Nodes ]           &lt;--- Perception, Planning, Control
+        ↓
+[ Topic / Service / Action / TF ]
+        ↓
+[ Visualization / GUI / Web / AI / SLAM ]
+</code></pre>
+<blockquote>
+<p>Mỗi thành phần chính sẽ tách thành bài học nhỏ đảm bảo bạn không bị khủng hoảng, và tôi cũng cố gắng thay đổi cách tiếp cận của các khóa học từ nước ngoài. Lộ trình học này có thể khác biệt nhưng theo tôi nó sẽ giúp bạn tự tin từng bước và cảm giác liên tục đạt được những thành tựu và hạn chế sự bỏ cuộc.</p>
+</blockquote>
+<p>Danh sách các thành phần chính trong ros2:</p>
+<table>
+<thead>
+<tr>
+<th>Thành phần</th>
+<th>Mô tả</th>
+<th>Bài học</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Hardware Interface</strong></td>
+<td>Giao tiếp phần cứng qua C++</td>
+<td>--</td>
+</tr>
+<tr>
+<td><strong>URDF/XACRO</strong></td>
+<td>Mô tả hình học và khớp nối robot</td>
+<td>--</td>
+</tr>
+<tr>
+<td><strong>TF2</strong></td>
+<td>Quản lý hệ trục tọa độ động</td>
+<td>--</td>
+</tr>
+<tr>
+<td><strong>Gazebo</strong></td>
+<td>Mô phỏng vật lý 3D</td>
+<td>--</td>
+</tr>
+<tr>
+<td><strong>RViz</strong></td>
+<td>Visualization 3D dữ liệu robot</td>
+<td>--</td>
+</tr>
+<tr>
+<td><strong>Nodes</strong></td>
+<td>Đơn vị xử lý độc lập, chạy song song, giao tiếp qua topics/services/actions</td>
+<td>--</td>
+</tr>
+<tr>
+<td><strong>Lifecycle nodes</strong></td>
+<td>Cho phép kiểm soát vòng đời của node (inactive, active...)</td>
+<td>--</td>
+</tr>
+<tr>
+<td><strong>Parameters</strong></td>
+<td>Cấu hình động cho nodes</td>
+<td>--</td>
+</tr>
+<tr>
+<td><strong>Launch system</strong></td>
+<td>Tự động khởi tạo nodes, cấu hình hệ thống</td>
+<td>--</td>
+</tr>
+<tr>
+<td><strong>Executors</strong></td>
+<td>Điều phối việc thực thi các callbacks trong nodes</td>
+<td>--</td>
+</tr>
+<tr>
+<td><strong>Topics</strong></td>
+<td>Kênh truyền dữ liệu kiểu publish/subscribe</td>
+<td>--</td>
+</tr>
+<tr>
+<td><strong>Services</strong></td>
+<td>Giao tiếp 2 chiều kiểu request/response</td>
+<td>--</td>
+</tr>
+<tr>
+<td><strong>Actions</strong></td>
+<td>Thực hiện các tác vụ dài hạn có thể theo dõi trạng thái</td>
+<td>--</td>
+</tr>
+<tr>
+<td><strong>Controller Manager</strong></td>
+<td>Quản lý các controller (PID, joint, velocity, effort...)</td>
+<td>--</td>
+</tr>
+<tr>
+<td><strong>ros2_control</strong></td>
+<td>Framework điều khiển phần cứng thời gian thực</td>
+<td>--</td>
+</tr>
+<tr>
+<td><strong>ros2_controllers</strong></td>
+<td>Bộ sưu tập các controller tiêu chuẩn</td>
+<td>--</td>
+</tr>
+<tr>
+<td><strong>Navigation2</strong></td>
+<td>Điều hướng và SLAM</td>
+<td>--</td>
+</tr>
+<tr>
+<td><strong>AI/ML/Deep Learning</strong></td>
+<td>ROS có thể tích hợp mô hình AI như YOLOv5, Detectron2, LLMs, thông qua ROS Nodes sử dụng Python/C++ để inference từ camera, lidar...</td>
+<td>--</td>
+</tr>
+</tbody>
+</table>
+<p>Rất nhiều người khi mới học ROS 2 đều cảm thấy <strong>hoang mang</strong>, kể cả những người đã biết lập trình lâu năm. Đây là lĩnh vực vừa dính đến <strong>code</strong>, vừa dính đến <strong>robot học</strong>, <strong>real-time</strong>, lại còn <strong>hệ thống phân tán</strong> nữa — cho nên <strong>khó là chuyện bình thường</strong>.</p>
+<p>Giờ chúng ta <strong>chính thức xuất phát nhé!</strong></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../../javascripts/extra.js"></script>
+      
+    
+  </body>
+</html>
